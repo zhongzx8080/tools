@@ -1,0 +1,8 @@
+<nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+  <input [ngModel]="qrcodeText" (keyup)="inputChange($event)" type="text" nz-input placeholder="输入内容" />
+</nz-input-group>
+<ng-template #suffixButton>
+  <button nz-button nzType="primary" nzSize="large" nzSearch>生成</button>
+</ng-template>
+
+<canvas id="qrcodeCanvas"></canvas>
