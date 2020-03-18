@@ -18,6 +18,11 @@ const routes: Routes = [
         path: "base64",
         loadChildren: () =>
           import("./base64/base64.module").then(m => m.Base64Module)
+      },
+      {
+        path: "qrcode",
+        loadChildren: () =>
+          import("./qrcode/qrcode.module").then(m => m.QrcodeModule)
       }
     ]
   },

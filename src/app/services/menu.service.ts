@@ -32,11 +32,11 @@ export class MenuService {
         children: [
           {
             text: '生成二维码',
-            link: '/'
+            link: '/qrcode/generate'
           },
           {
             text: '二维码解码',
-            link: '/'
+            link: '/qrcode/decode'
           }
         ]
       },
