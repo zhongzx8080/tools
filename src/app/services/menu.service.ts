@@ -15,15 +15,15 @@ export class MenuService {
         children: [
           {
             text: '图片转Base64',
-            link: '/'
+            link: '/base64/image-to-base64'
           },
           {
             text: 'Base64编码',
-            link: '/'
+            link: '/base64/encode'
           },
           {
             text: 'Base64解码',
-            link: '/'
+            link: '/base64/decode'
           }
         ]
       },
