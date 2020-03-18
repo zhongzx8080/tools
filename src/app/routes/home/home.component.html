@@ -2,7 +2,7 @@
   <nz-header>
     <ul nz-menu  nzMode="horizontal">
       <ng-container *ngFor="let menu of menus" >
-          <li *ngIf="!menu.children"  nz-menu-item>{{menu.text}}</li>
+          <li *ngIf="!menu.children"  nz-menu-item routerLink="{{menu.link}}" >{{menu.text}}</li>
           <li *ngIf="menu.children"  nz-submenu nzTitle="{{menu.text}}" >
             <ul>
               <li *ngFor="let child of menu.children" nz-menu-item routerLink="{{child.link}}" > {{child.text}} </li>

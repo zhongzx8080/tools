@@ -59,6 +59,10 @@ export class MenuService {
             text: '格式化'
           }
         ]
+      },
+      {
+        text: '关于',
+        link: '/about'
       }
     ]
     return menus;
