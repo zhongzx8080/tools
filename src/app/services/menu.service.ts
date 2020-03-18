@@ -1,0 +1,67 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MenuService {
+
+  constructor() { }
+
+
+  getNavMenus () {
+    let menus = [
+      {
+        text: 'Base 64',
+        children: [
+          {
+            text: '图片转Base64',
+            link: '/'
+          },
+          {
+            text: 'Base64编码',
+            link: '/'
+          },
+          {
+            text: 'Base64解码',
+            link: '/'
+          }
+        ]
+      },
+      {
+        text: '二维码',
+        children: [
+          {
+            text: '生成二维码',
+            link: '/'
+          },
+          {
+            text: '二维码解码',
+            link: '/'
+          }
+        ]
+      },
+      {
+        text: 'JWT',
+        children: [
+          {
+            text: 'JWT编码',
+            link: '/'
+          },
+          {
+            text: 'JWT解码'
+          }
+        ]
+      },
+      {
+        text: 'JSON',
+        children: [
+          {
+            text: '格式化'
+          }
+        ]
+      }
+    ]
+    return menus;
+  }
+
+}
