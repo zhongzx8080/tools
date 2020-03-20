@@ -1,16 +1,25 @@
 <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-  <input [ngModel]="qrcodeText" (keyup)="inputChange($event)" type="text" nz-input placeholder="输入内容" />
+  <input
+    [ngModel]="qrcodeText"
+    (keyup)="inputChange($event)"
+    type="text"
+    nz-input
+    placeholder="输入内容"
+  />
 </nz-input-group>
 <ng-template #suffixButton>
   <button nz-button nzType="primary" nzSize="large" nzSearch>生成</button>
 </ng-template>
 
-
-<nz-card>
-  <div nz-row >
-    <div nz-col nzSpan='18' >
-      <canvas id="qrcodeCanvas"></canvas>
+<nz-card class="qrcode-card" nzTitle="二维码" [nzExtra]="extraTemplate">
+  <div nz-row>
+    <div nz-col nzSpan="18">
+      <img src="{{imgUrl}}" alt="">
     </div>
-    <div nz-col nzSpan='6' ></div>
+    <div nz-col nzSpan="6"></div>
   </div>
 </nz-card>
+
+<ng-template #extraTemplate>
+  <a href="{{imgUrl}}" download="qrcode.png" >下载二维码</a>
+</ng-template>
