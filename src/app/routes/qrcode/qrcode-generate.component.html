@@ -1,25 +1,85 @@
 <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
   <input
-    [ngModel]="qrcodeText"
-    (keyup)="inputChange($event)"
+    [(ngModel)]="options.text"
+    (input)="inputChange()"
     type="text"
     nz-input
     placeholder="输入内容"
   />
 </nz-input-group>
 <ng-template #suffixButton>
-  <button nz-button nzType="primary" nzSize="large" nzSearch>生成</button>
+  <button
+    (click)="generateQrcode()"
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzSearch
+  >
+    生成
+  </button>
 </ng-template>
 
-<nz-card class="qrcode-card" nzTitle="二维码" [nzExtra]="extraTemplate">
+<nz-card *ngIf="imgUrl" class="qrcode-card">
   <div nz-row>
-    <div nz-col nzSpan="18">
-      <img src="{{imgUrl}}" alt="">
+    <div nz-col nzSpan="8">
+      <form nz-form [formGroup]="validateForm">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="foreground"
+            >前景色</nz-form-label
+          >
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input
+              type="color"
+              nz-input
+              formControlName="foreground"
+              id="foreground"
+              [(ngModel)]="options.color.dark"
+              (change)="generateQrcode()"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="background"
+            >背景色</nz-form-label
+          >
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input
+              type="color"
+              nz-input
+              id="background"
+              formControlName="background"
+              (change)="generateQrcode()"
+              [(ngModel)]="options.color.light"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="size"
+            >下载文件名称</nz-form-label
+          >
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input
+              nz-input
+              [(ngModel)]="fileName"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <a
+              nz-button
+              nzType="primary"
+              href="{{ imgUrl }}"
+              download="{{ fileName || 'qrcode' }}.png"
+              >下载</a
+            >
+          </nz-form-control>
+        </nz-form-item>
+      </form>
     </div>
-    <div nz-col nzSpan="6"></div>
+    <div nz-col nzSpan="16">
+      <img class="qrcode-img" src="{{ imgUrl }}" alt="" />
+    </div>
   </div>
 </nz-card>
-
-<ng-template #extraTemplate>
-  <a href="{{imgUrl}}" download="qrcode.png" >下载二维码</a>
-</ng-template>
