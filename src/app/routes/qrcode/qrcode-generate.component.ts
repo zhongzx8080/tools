@@ -5,7 +5,14 @@ import * as QRCode from "qrcode";
 
 @Component({
   selector: "app-qrcode-generate",
-  templateUrl: "./qrcode-generate.component.html"
+  templateUrl: "./qrcode-generate.component.html",
+  styles:[
+    `
+      .qrcode-card {
+        margin-top: 10px;
+      }
+    `
+  ]
 })
 export class QrcodeGenerateComponent implements OnInit {
   canvasId = "qrcodeCanvas";
@@ -13,6 +20,7 @@ export class QrcodeGenerateComponent implements OnInit {
   inputSubject = new Subject<String>();
 
   qrcodeText = "";
+  imgUrl = '';
 
   constructor() {}
 
@@ -20,7 +28,6 @@ export class QrcodeGenerateComponent implements OnInit {
     this.inputSubject
       .pipe(debounceTime(100), distinctUntilChanged())
       .subscribe(data => {
-        console.log('subject', data);
         this.generateQrcode(data);
       });
   }
@@ -31,15 +38,22 @@ export class QrcodeGenerateComponent implements OnInit {
   }
 
   generateQrcode(data) {
-    let canvasElement = document.getElementById(this.canvasId);
-    let options = {
-      width: 200
-    }
-    QRCode.toCanvas(canvasElement, data, options, function(error) {
-      if (error) {
-        console.error(error);
+    let opts = {
+      errorCorrectionLevel: 'H',
+      type: 'image/jpeg',
+      quality: 0.3,
+      margin: 1,
+      color: {
+        dark:"#010599FF",
+        light:"#FFBF60FF"
       }
-      console.log("success!");
-    });
+    }
+
+    QRCode.toDataURL(data, opts, (err, url) => {
+      if (err) {
+        throw err
+      }
+      this.imgUrl = url;
+    })
   }
 }
