@@ -1,1 +1,44 @@
-<p>qrcode-decode works!</p>
+<nz-card nzTitle="二维码解码">
+  <nz-list
+    [nzDataSource]="data"
+    [nzItemLayout]="'vertical'"
+    [nzRenderItem]="item"
+  >
+    <ng-template #item let-item>
+      <nz-list-item [nzExtra]="extra" [nzActions]="[copyAction]">
+        <nz-list-item-meta [nzTitle]="nzTitle">
+          <ng-template #nzTitle>
+            <nz-upload
+              nzType="drag"
+              [(nzFileList)]="fileList"
+              [nzBeforeUpload]="beforeUpload"
+              [nzFileType]="'image/png,image/jpeg,image/gif,image/bmp'"
+              [nzAccept]="'image/png,image/jpeg,image/gif,image/bmp'"
+            >
+              <p class="ant-upload-drag-icon">
+                <i nz-icon nzType="inbox"></i>
+              </p>
+              <p class="ant-upload-text">点击或拖拽二维码图片至此</p>
+            </nz-upload>
+          </ng-template>
+          <ng-template #copyAction>
+            <p *ngIf="qrcodeText">解码结果:</p>
+            <p
+              *ngIf="qrcodeText"
+              nz-paragraph
+              nzCopyable
+              [nzCopyText]="qrcodeText"
+            >
+              {{ qrcodeText }}
+            </p>
+          </ng-template>
+        </nz-list-item-meta>
+        <ng-template #extra>
+          <ng-container *ngIf="base64Image">
+            <img width="300" alt="logo" src="{{ base64Image }}" />
+          </ng-container>
+        </ng-template>
+      </nz-list-item>
+    </ng-template>
+  </nz-list>
+</nz-card>

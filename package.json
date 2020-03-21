@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~9.0.2",
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
+    "@nuintun/qrcode": "^1.0.4",
     "js-base64": "^2.5.2",
     "ng-zorro-antd": "^8.5.2",
     "qrcode": "^1.4.4",
