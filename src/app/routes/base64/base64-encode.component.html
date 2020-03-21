@@ -1,1 +1,24 @@
-<p>base64-encode works!</p>
+<nz-card nzTitle="Base64编码">
+  <button class="clearBtn" nz-button nzType="default" (click)="clearText()">清空</button>
+  <div nz-row nzGutter="16">
+    <div nz-col nzSpan="12">
+      <nz-card nzTitle="编码前">
+        <textarea
+          [nzAutosize]="{ minRows: rows }"
+          [(ngModel)]="originText"
+          (ngModelChange)="textChange($event)"
+          nz-input
+        ></textarea>
+      </nz-card>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-card nzTitle="编码后">
+        <textarea
+          [nzAutosize]="{ minRows: rows }"
+          [(ngModel)]="encodedText"
+          nz-input
+        ></textarea>
+      </nz-card>
+    </div>
+  </div>
+</nz-card>
