@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import * as QRCode from "qrcode";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: "app-qrcode-generate",
@@ -11,45 +12,67 @@ import * as QRCode from "qrcode";
       .qrcode-card {
         margin-top: 10px;
       }
+
+      .qrcode-img {
+        min-width: 256px;
+      }
     `
   ]
 })
 export class QrcodeGenerateComponent implements OnInit {
   canvasId = "qrcodeCanvas";
 
-  inputSubject = new Subject<String>();
+  inputSubject = new Subject<Object>();
 
-  qrcodeText = "";
+  // 图片路径
   imgUrl = '';
 
-  constructor() {}
+  // 文件名
+  fileName = "qrcode";
 
-  ngOnInit(): void {
-    this.inputSubject
-      .pipe(debounceTime(100), distinctUntilChanged())
-      .subscribe(data => {
-        this.generateQrcode(data);
-      });
-  }
+  validateForm: FormGroup;
 
-  inputChange(event) {
-    let value = event.target.value;
-    this.inputSubject.next(value);
-  }
-
-  generateQrcode(data) {
-    let opts = {
-      errorCorrectionLevel: 'H',
+  options = {
+    errorCorrectionLevel: 'H',
       type: 'image/jpeg',
       quality: 0.3,
       margin: 1,
       color: {
-        dark:"#010599FF",
-        light:"#FFBF60FF"
-      }
+        dark: '',
+        light: ''
+      },
+      text: '',
+      size: 100
+  }
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.inputSubject
+      .subscribe(data => {
+        this.generateQrcode();
+      });
+
+      this.validateForm = this.fb.group({
+        foreground: [null, []],
+        background: [null, []],
+        size: [null, []]
+      });
+  }
+
+  inputChange() {
+    this.inputSubject.next();
+  }
+
+  generateQrcode() {
+
+    let opts = {...this.options}
+    let text = opts['text'] || ''
+    if (!text) {
+      return;
     }
 
-    QRCode.toDataURL(data, opts, (err, url) => {
+    QRCode.toDataURL(text, opts, (err, url) => {
       if (err) {
         throw err
       }
