@@ -3,14 +3,7 @@ import { Base64 } from "js-base64";
 
 @Component({
   selector: "app-base64-encode",
-  templateUrl: "./base64-encode.component.html",
-  styles: [
-    `
-      .clearBtn {
-        margin-bottom: 10px;
-      }
-    `
-  ]
+  templateUrl: "./base64-encode.component.html"
 })
 export class Base64EncodeComponent implements OnInit {
   rows = 15;
