@@ -23,6 +23,14 @@ const routes: Routes = [
         path: "qrcode",
         loadChildren: () =>
           import("./qrcode/qrcode.module").then(m => m.QrcodeModule)
+      },
+      {
+        path: "jwt",
+        loadChildren: () => import("./jwt/jwt.module").then(m => m.JwtModule)
+      },
+      {
+        path: "json",
+        loadChildren: () => import("./json/json.module").then(m => m.JsonModule)
       }
     ]
   },
