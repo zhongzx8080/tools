@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  useHash: true
+  useHash: true,
+  github: 'https://github.com/zhongzx8080'
 };
 
 /*

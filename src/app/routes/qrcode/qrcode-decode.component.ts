@@ -77,6 +77,7 @@ export class QrcodeDecodeComponent implements OnInit {
         that.qrcodeText = result.data;
       })
       .catch(error => {
+        that.qrcodeText = "解码失败,请检查上传图片是否为二维码图片";
         that.msg.error("解码失败,请检查上传图片是否为二维码图片");
       });
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Base64 } from "js-base64";
+import { Base64Service } from "src/app/services";
 
 @Component({
   selector: "app-base64-decode",
@@ -11,26 +11,16 @@ export class Base64DecodeComponent implements OnInit {
   originText = "";
   decodedText = "";
 
-  constructor() {}
+  constructor(private base64Service: Base64Service) {}
 
   ngOnInit(): void {}
 
   textChange(evt) {
-    this.decodedText = this.base64Decode(this.originText);
+    this.decodedText = this.base64Service.decode(this.originText);
   }
 
   clearText() {
     this.originText = "";
     this.decodedText = "";
-  }
-
-  private base64Decode(str) {
-    let result = "";
-    try {
-      result = Base64.decode(str);
-    } catch (error) {
-      console.log("base64 decode error", error);
-    }
-    return result;
   }
 }

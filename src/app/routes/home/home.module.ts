@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
-import { JwtDecodeComponent } from "./jwt-decode.component";
-import { JwtEncodeComponent } from "./jwt-encode.component";
 import { Routes, RouterModule } from "@angular/router";
 import { SharedModule } from "src/app/shared/shared.module";
+import { HomeComponent } from "./home.component";
+import { AboutComponent } from "./about.component";
 
-const COMPONENTS = [JwtEncodeComponent, JwtDecodeComponent];
+const COMPONENTS = [HomeComponent, AboutComponent];
 
 const COMPONENTS_NOROUNT = [];
 
@@ -12,15 +12,11 @@ const COMPONENTS_NOROUNT = [];
 const routes: Routes = [
   {
     path: "",
-    component: JwtEncodeComponent
-  },
-  {
-    path: "encode",
-    component: JwtEncodeComponent
-  },
-  {
-    path: "decode",
-    component: JwtDecodeComponent
+    redirectTo: "base64",
+    pathMatch: "full"
+  }, {
+    path: 'about',
+    component: AboutComponent
   }
 ];
 
@@ -30,4 +26,4 @@ const routes: Routes = [
   entryComponents: COMPONENTS_NOROUNT,
   exports: [RouterModule]
 })
-export class JwtModule {}
+export class HomeModule {}

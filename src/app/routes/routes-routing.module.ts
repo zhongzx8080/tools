@@ -15,6 +15,10 @@ const routes: Routes = [
         pathMatch: "full"
       },
       {
+        path: "home",
+        loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
+      },
+      {
         path: "base64",
         loadChildren: () =>
           import("./base64/base64.module").then(m => m.Base64Module)
@@ -23,6 +27,14 @@ const routes: Routes = [
         path: "qrcode",
         loadChildren: () =>
           import("./qrcode/qrcode.module").then(m => m.QrcodeModule)
+      },
+      {
+        path: "jwt",
+        loadChildren: () => import("./jwt/jwt.module").then(m => m.JwtModule)
+      },
+      {
+        path: "json",
+        loadChildren: () => import("./json/json.module").then(m => m.JsonModule)
       }
     ]
   },

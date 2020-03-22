@@ -18,7 +18,7 @@ registerLocaleData(zh);
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    // HomeComponent,
     ExceptionComponent
   ],
   imports: [

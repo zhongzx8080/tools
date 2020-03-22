@@ -43,12 +43,13 @@ export class MenuService {
       {
         text: 'JWT',
         children: [
+          // {
+          //   text: 'JWT编码',
+          //   link: '/jwt/encode'
+          // },
           {
-            text: 'JWT编码',
-            link: '/'
-          },
-          {
-            text: 'JWT解码'
+            text: 'JWT解码',
+            link: '/jwt/decode'
           }
         ]
       },
@@ -56,13 +57,14 @@ export class MenuService {
         text: 'JSON',
         children: [
           {
-            text: '格式化'
+            text: '格式化',
+            link: '/json/format'
           }
         ]
       },
       {
         text: '关于',
-        link: '/about'
+        link: '/home/about'
       }
     ]
     return menus;
