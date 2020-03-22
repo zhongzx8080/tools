@@ -15,6 +15,10 @@ const routes: Routes = [
         pathMatch: "full"
       },
       {
+        path: "home",
+        loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
+      },
+      {
         path: "base64",
         loadChildren: () =>
           import("./base64/base64.module").then(m => m.Base64Module)

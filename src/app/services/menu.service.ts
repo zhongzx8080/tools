@@ -62,10 +62,10 @@ export class MenuService {
           }
         ]
       },
-      // {
-      //   text: '关于',
-      //   link: '/about'
-      // }
+      {
+        text: '关于',
+        link: '/home/about'
+      }
     ]
     return menus;
   }

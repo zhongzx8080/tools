@@ -2,7 +2,7 @@
 
 # 1. base64
 
-- base64 -> img
+- [图片转Base64](https://zhongzx8080.github.io)
 - base64 编码、解码
 
 # 2. 二维码
@@ -13,8 +13,6 @@
 
 
 # 3. jwt
-
-- jwt 编码
 - jwt 解码
 
 
