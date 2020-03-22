@@ -1,22 +1,24 @@
 # 小工具
 
-# 1. base64
+# 1. Base64
 
-- [图片转Base64](https://zhongzx8080.github.io)
-- base64 编码、解码
+- [图片转Base64](https://zhongzhixing.gitee.io/#/base64)
+- [Base64编码](https://zhongzhixing.gitee.io/#/base64/encode)
+- [Base64解码](https://zhongzhixing.gitee.io/#/base64/decode)
 
 # 2. 二维码
 
-- text -> qrcode
-- qrcode -> text
+- [二维码生成](https://zhongzhixing.gitee.io/#/qrcode/generate)
+- [二维码解码](https://zhongzhixing.gitee.io/#/qrcode/decode)
 
 
 
-# 3. jwt
-- jwt 解码
+# 3. JWT
+- [JWT解码](https://zhongzhixing.gitee.io/#/jwt/decode)
 
 
 
-# 4. json 
+# 4. JSON
 
-- json格式化
+- [JSON格式化](https://zhongzhixing.gitee.io/#/json/format)
+
