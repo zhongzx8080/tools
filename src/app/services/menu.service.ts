@@ -41,26 +41,16 @@ export class MenuService {
         ]
       },
       {
-        text: 'JWT',
-        children: [
-          // {
-          //   text: 'JWT编码',
-          //   link: '/jwt/encode'
-          // },
-          {
-            text: 'JWT解码',
-            link: '/jwt/decode'
-          }
-        ]
+        text: 'JWT解码',
+        link: '/jwt/decode'
       },
       {
-        text: 'JSON',
-        children: [
-          {
-            text: '格式化',
-            link: '/json/format'
-          }
-        ]
+        text: 'JSON格式化',
+        link: '/json/format'
+      },
+      {
+        text: 'MD5摘要',
+        link: '/md5'
       },
       {
         text: '关于',
