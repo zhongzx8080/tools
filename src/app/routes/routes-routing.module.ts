@@ -35,6 +35,10 @@ const routes: Routes = [
       {
         path: "json",
         loadChildren: () => import("./json/json.module").then(m => m.JsonModule)
+      },
+      {
+        path: 'md5',
+        loadChildren: () => import("./md5/md5.module").then(m => m.Md5Module)
       }
     ]
   },

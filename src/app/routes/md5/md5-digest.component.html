@@ -1,0 +1,83 @@
+<nz-card nzTitle="MD5摘要">
+  <button class="clearBtn" nz-button nzType="default" (click)="clearText()">
+    清空
+  </button>
+  <div nz-row nzGutter="16">
+    <div nz-col nzSpan="12">
+      <nz-card nzTitle="摘要选项">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-label nzFor="origin">原文</nz-form-label>
+            <nz-form-control>
+              <textarea
+                id="originText"
+                formControlName="originText"
+                [nzAutosize]="{ minRows: rows }"
+                nz-input
+                (ngModelChange)="generateDigest()"
+              ></textarea>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label nzFor="salt">盐</nz-form-label>
+            <nz-form-control>
+              <input
+                (ngModelChange)="generateDigest()"
+                nz-input
+                formControlName="salt"
+                id="salt"
+              />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label nzFor="salt">摘要次数</nz-form-label>
+            <nz-form-control>
+              <nz-input-number
+                [(ngModel)]="times"
+                [nzMin]="1"
+                [nzStep]="10"
+                [ngModelOptions]="{ standalone: true }"
+                (ngModelChange)="generateDigest()"
+              ></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <button nz-button>生成摘要</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </nz-card>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-card nzTitle="摘要结果">
+        <ng-container *ngIf="digestedText">
+          <nz-descriptions nzTitle="">
+            <nz-descriptions-item nzSpan="3" nzTitle="大写">
+              <p
+                nz-paragraph
+                nzCopyable
+                nzCopyText="{{ digestedText | uppercase }}"
+              >
+                {{ digestedText | uppercase }}
+              </p>
+            </nz-descriptions-item>
+            <br />
+            <nz-descriptions-item nzSpan="3" nzTitle="小写">
+              <p
+                nz-paragraph
+                nzCopyable
+                nzCopyText="{{ digestedText | lowercase }}"
+              >
+                {{ digestedText | lowercase }}
+              </p>
+            </nz-descriptions-item>
+          </nz-descriptions>
+        </ng-container>
+      </nz-card>
+    </div>
+  </div>
+</nz-card>
