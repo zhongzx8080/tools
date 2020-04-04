@@ -22,3 +22,10 @@
 
 - [JSON格式化](https://zhongzhixing.gitee.io/#/json/format)
 
+## 5. MD5摘要
+
+- [MD5摘要](https://zhongzhixing.gitee.io/#/md5)
+
+## 6. 图片取色
+
+- [图片取色](https://zhongzhixing.gitee.io/#/color-extractor)
