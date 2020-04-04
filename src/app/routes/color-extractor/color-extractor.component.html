@@ -1,0 +1,89 @@
+<nz-card nzTitle="图片取色">
+  <nz-alert
+    nzType="info"
+    nzDescription="选择图片后点击图片进行取色"
+    nzShowIcon
+    [nzCloseable]="true"
+  >
+  </nz-alert>
+  <nz-list
+    [nzDataSource]="data"
+    [nzItemLayout]="'vertical'"
+    [nzRenderItem]="item"
+  >
+    <ng-template #item let-item>
+      <nz-list-item [nzExtra]="extra" [nzActions]="[copyAction]">
+        <nz-list-item-meta [nzTitle]="nzTitle">
+          <ng-template #nzTitle>
+            <nz-upload
+              nzType="drag"
+              [(nzFileList)]="fileList"
+              [nzBeforeUpload]="beforeUpload"
+              [nzFileType]="'image/png,image/jpeg,image/gif,image/bmp'"
+              [nzAccept]="'image/png,image/jpeg,image/gif,image/bmp'"
+            >
+              <p class="ant-upload-drag-icon">
+                <i nz-icon nzType="inbox"></i>
+              </p>
+              <p class="ant-upload-text">点击或拖拽图片至此</p>
+            </nz-upload>
+          </ng-template>
+          <ng-template #copyAction>
+            <div nz-row nzGutter="16">
+              <div nz-col nzSpan="10">
+                <nz-descriptions
+                  *ngIf="colorInfo.hex && colorInfo.rgb"
+                  nzTitle="取色结果"
+                  nzBordered
+                >
+                  <nz-descriptions-item nzTitle="16进制大写" nzSpan="3">
+                    <p
+                      nz-paragraph
+                      nzCopyable
+                      nzCopyText="{{ colorInfo.hex | uppercase }}"
+                    >
+                      <nz-tag nzColor="{{ colorInfo.hex }}">
+                        {{ colorInfo.hex | uppercase }}
+                      </nz-tag>
+                    </p>
+                  </nz-descriptions-item>
+                  <nz-descriptions-item nzTitle="16进制小写" nzSpan="3">
+                    <p
+                      nz-paragraph
+                      nzCopyable
+                      nzCopyText="{{ colorInfo.hex | lowercase }}"
+                    >
+                      <nz-tag nzColor="{{ colorInfo.hex }}">
+                        {{ colorInfo.hex | lowercase }}
+                      </nz-tag>
+                    </p>
+                  </nz-descriptions-item>
+                  <nz-descriptions-item nzTitle="RGB" nzSpan="3">
+                    <p
+                      nz-paragraph
+                      nzCopyable
+                      nzCopyText="{{ colorInfo.rgb | lowercase }}"
+                    >
+                      <nz-tag nzColor="{{ colorInfo.hex }}">
+                        {{ colorInfo.rgb | lowercase }}
+                      </nz-tag>
+                    </p>
+                  </nz-descriptions-item>
+                </nz-descriptions>
+              </div>
+              <div nz-col nzSpan="14">
+                <canvas
+                  width="800"
+                  height="800"
+                  id="canvas"
+                  (click)="pick($event)"
+                ></canvas>
+              </div>
+            </div>
+          </ng-template>
+        </nz-list-item-meta>
+        <ng-template #extra> </ng-template>
+      </nz-list-item>
+    </ng-template>
+  </nz-list>
+</nz-card>

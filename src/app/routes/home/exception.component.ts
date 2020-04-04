@@ -10,7 +10,7 @@ export class ExceptionComponent implements OnInit {
 
 
   exceptionInfo = {
-    status: 404,
+    status: '404',
     title: '404',
     msg: 'Sorry, the page you visited does not exist.'
   }

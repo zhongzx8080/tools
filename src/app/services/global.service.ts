@@ -37,7 +37,6 @@ export class GlobalService {
 
   // md5摘要
   digest(originText = "", times = 1) {
-    console.log('originstr', originText)
     let digestedStr = originText;
     try {
       if (times > 0) {

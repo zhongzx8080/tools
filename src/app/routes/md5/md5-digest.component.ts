@@ -38,7 +38,6 @@ export class Md5DigestComponent implements OnInit {
     let str = this.originText + salt;
     let times = this.times > 0 ? this.times : 1;
     this.digestedText = this.globalService.digest(str, times);
-    console.log("result", this.digestedText);
   }
 
   submitForm(): void {

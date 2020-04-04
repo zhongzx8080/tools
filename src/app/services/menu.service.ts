@@ -53,6 +53,10 @@ export class MenuService {
         link: '/md5'
       },
       {
+        text: '图片取色',
+        link: '/color-extractor'
+      },
+      {
         text: '关于',
         link: '/home/about'
       }
