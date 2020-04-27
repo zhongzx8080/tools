@@ -9,7 +9,6 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 
 import { SharedModule } from './shared/shared.module';
-import { HomeComponent } from './routes/home/home.component';
 import { ExceptionComponent } from './routes/home/exception.component';
 import { RoutesModule } from './routes/routes.module';
 
@@ -18,7 +17,6 @@ registerLocaleData(zh);
 @NgModule({
   declarations: [
     AppComponent,
-    // HomeComponent,
     ExceptionComponent
   ],
   imports: [
