@@ -22,7 +22,7 @@
     "@nuintun/qrcode": "^1.0.4",
     "js-base64": "^2.5.2",
     "js-md5": "^0.7.3",
-    "ng-zorro-antd": "^8.5.2",
+    "ng-zorro-antd": "^9.1.0",
     "qrcode": "^1.4.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
