@@ -7,8 +7,8 @@
       <nz-card nzTitle="摘要选项">
         <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
           <nz-form-item>
-            <nz-form-label nzFor="origin">原文</nz-form-label>
-            <nz-form-control>
+            <nz-form-label [nzSpan]="2" nzFor="originText">原文</nz-form-label>
+            <nz-form-control [nzSpan]="20">
               <textarea
                 id="originText"
                 formControlName="originText"
@@ -20,8 +20,8 @@
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-label nzFor="salt">盐</nz-form-label>
-            <nz-form-control>
+            <nz-form-label [nzSpan]="2" nzFor="salt">盐</nz-form-label>
+            <nz-form-control [nzSpan]="20">
               <input
                 (ngModelChange)="generateDigest()"
                 nz-input
@@ -32,8 +32,8 @@
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-label nzFor="salt">摘要次数</nz-form-label>
-            <nz-form-control>
+            <nz-form-label [nzSpan]="2">摘要次数</nz-form-label>
+            <nz-form-control [nzSpan]="20">
               <nz-input-number
                 [(ngModel)]="times"
                 [nzMin]="1"
